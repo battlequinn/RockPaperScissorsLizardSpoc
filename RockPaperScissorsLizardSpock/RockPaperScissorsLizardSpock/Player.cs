@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    class Singleplayer
+    public class Player
     {
-
-        public void RunSingleplayer()
+        public string name;
+        public Player()
         {
-
+        }
+        public virtual string SetInput(string name)
+        {
+            return name;
         }
     }
 }
