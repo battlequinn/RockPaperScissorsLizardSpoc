@@ -86,7 +86,7 @@ namespace RockPaperScissorsLizardSpock
         private void DisplayPass()
         {
             Console.WriteLine("=======================================================================================");
-            Console.WriteLine("Please pass the device.");
+            Console.WriteLine("Please pass the device to Player 2.");
             Console.WriteLine("=======================================================================================");
         }
         
@@ -122,26 +122,26 @@ namespace RockPaperScissorsLizardSpock
         }
         private int DetermineWinner(string inputOne, string inputTwo)
         {
-            int gameWon = 0;
+            int playerWhoWon = 0;
             int inputOneNumber = AssignNumberToInput(inputOne);
             int inputTwoNumber = AssignNumberToInput(inputTwo);
             int outcome = (5 + inputOneNumber - inputTwoNumber) % 5;
             if (outcome == 1 || outcome == 3)
             {
-                return gameWon = 1;
+                return playerWhoWon = 1;
             }
             else if (outcome == 2 || outcome == 4)
             {
-                return gameWon = 2;
+                return playerWhoWon = 2;
             }else
             {
-                return gameWon = 0;
+                return playerWhoWon = 0;
             }
             
         }
-        private void DisplayRoundWinner(int gameWon)
+        private void DisplayRoundWinner(int playerWhoWon)
         {
-            switch (gameWon)
+            switch (playerWhoWon)
             {
                 case 0:
                     Console.WriteLine("Tie.");
@@ -238,12 +238,12 @@ namespace RockPaperScissorsLizardSpock
             DisplayWinCount(playerOneWin, playerTwoWin);
             GetInputs();
             DisplayInputs(inputs[0], inputs[1]);
-            int gameWon = DetermineWinner(inputs[0], inputs[1]);
-            DisplayRoundWinner(gameWon);
+            int playerWhoWon = DetermineWinner(inputs[0], inputs[1]);
+            DisplayRoundWinner(playerWhoWon);
             Console.ReadKey();
             Console.Clear();
             inputs.Clear();
-            PlayNextRound(gameWon, playerOneWin, playerTwoWin, mode);
+            PlayNextRound(playerWhoWon, playerOneWin, playerTwoWin, mode);
         }
         public void RunGame()
         {
