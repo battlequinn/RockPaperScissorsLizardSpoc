@@ -47,7 +47,7 @@ namespace RockPaperScissorsLizardSpock
             Console.WriteLine("\nMain Menu");
             Console.WriteLine("___________");
             Console.WriteLine("\nPlease enter the number corresponding to the game mode you would like to play.");
-            bool reset = false;
+            bool loop = false;
             int answer;
             do
             {
@@ -55,14 +55,14 @@ namespace RockPaperScissorsLizardSpock
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
                 if (result && (answer == 1 || answer == 2 || answer == 3))
                 {
-                    break;
+                    loop = false;
                 }
                 else
                 {
                     Console.WriteLine("ERROR: Unable to read input. Please type the number '1', '2', or '3'.");
-                    reset = true;
+                    loop = true;
                 }
-            } while (reset == true);
+            } while (loop == true);
             return answer;
         }
         private void DisplayGameMode(int mode)
@@ -210,7 +210,7 @@ namespace RockPaperScissorsLizardSpock
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
                 if (result && (answer == 1 || answer == 2))
                 {
-                    break;
+                    loop = false;
                 }
                 else
                 {
@@ -250,20 +250,23 @@ namespace RockPaperScissorsLizardSpock
             Console.Clear();
             DisplayWelcome();
             int mode = ChooseGameMode();
-            if (mode == 1)
+            switch (mode)
             {
-                AddPeople();
-                AddComputer();
-            }
-            if (mode == 2)
-            {
-                AddPeople();
-                DisplayPass();
-                AddPeople();
-            }
-            if(mode == 0)
-            {
-                Environment.Exit(0);
+                case 1:
+                    AddPeople();
+                    AddComputer();
+                    break;
+                case 2:
+                    AddPeople();
+                    DisplayPass();
+                    AddPeople();
+                    break;
+                case 3:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Sorry, there was an error processing your request.");
+                    break;
             }
             Console.Clear();
             int playerOneWin = 0;

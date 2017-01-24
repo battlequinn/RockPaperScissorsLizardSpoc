@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    public class Player
+    public abstract class Player
     {
         public string name;
         public Player()
